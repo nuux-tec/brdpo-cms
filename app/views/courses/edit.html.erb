@@ -1,6 +1,22 @@
-<h1>Editing Course</h1>
+<div class="container cms">
+  <div class="cms__page">
+    <div class="cms__breadcrumb">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <%= link_to 'Cursos', courses_path %>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Editar curso</li>
+        </ol>
+      </nav>
+    </div>
 
-<%= render 'form', course: @course %>
+    <h1 class="cms__title m-0">Editar curso</h1>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+    <div class="cms__content">
+      <div class="cms__form">
+        <%= render 'form', course: @course %>
+      </div>
+    </div>
+  </div>
+</div>

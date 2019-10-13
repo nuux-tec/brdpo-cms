@@ -25,7 +25,7 @@
       <div class="form-group">
         <%= form.label :duration, "Duração do curso", class: 'm-0' %>
         <div class="text-muted mb-2">Ex: 1 semana, 1 mês</div>
-        <%= form.number_field :duration, class: 'form-control' %>
+        <%= form.text_field :duration, class: 'form-control' %>
       </div>
     </div>
   </div>
@@ -61,6 +61,10 @@
   <div class="row">
     <div class="col-md-6">
       <div class="actions d-flex justify-content-between">
+        <% if  %>
+          
+        <% end %>
+        
         <%= form.submit 'Criar curso', class: 'btn btn-success' %>
         <%= link_to 'Cancelar', courses_path, class: 'btn btn-light' %>
       </div>

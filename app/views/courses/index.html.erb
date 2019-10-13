@@ -1,3 +1,5 @@
+<%= render 'layouts/alert' %>
+
 <div class="container cms">
   <div class="cms__page">
     <h1 class="cms__title m-0">Cursos</h1>
@@ -38,7 +40,7 @@
           </tbody>
         </table>
 
-        <%= link_to 'New Course', new_course_path %>
+        <%= link_to 'Novo curso', new_course_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
