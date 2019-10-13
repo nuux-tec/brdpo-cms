@@ -1,5 +1,8 @@
 {
   "name": "brdpo-cms",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/actiontext": "^6.0.0",
+    "trix": "^1.0.0"
+  }
 }
