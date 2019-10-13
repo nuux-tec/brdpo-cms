@@ -1,4 +1,16 @@
 .btn
   font-family: $font-family-button
+  font-size: $font-size-body
   font-weight: $font-weight-button
   
+.form-control
+  font-size: $font-size-body
+  font-weight: $font-weight-input
+  height: 42px
+
+  &:focus
+    border: 1px solid $primary
+    box-shadow: none
+
+  &:invalid:focus, &:valid:focus
+    box-shadow: none !important
