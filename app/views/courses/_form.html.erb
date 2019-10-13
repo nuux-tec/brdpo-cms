@@ -1,9 +1,9 @@
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+    <div class="alert alert-warning mb-4">
+      Há alguns erros no formulário, confira:
 
-      <ul>
+      <ul class="m-0">
         <% course.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -11,32 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :name, "Nome do curso" %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.number_field :duration %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :duration, "Duração do curso", class: 'm-0' %>
+        <div class="text-muted mb-2">Ex: 1 semana, 1 mês</div>
+        <%= form.number_field :duration, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :when %>
-    <%= form.date_select :when %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :when, "Data do curso" %>
+        <br>
+        <%= form.date_select :when, { order: [:day, :month, :year], start_year: Date.today.year }, { class: "custom-select" } %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :price, "Preço do curso (em R$)" %>
+        <%= form.text_field :price, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :about %>
-    <%= form.text_area :about %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :about, "Descrição do curso" %>
+        <%= form.rich_text_area :about %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="actions d-flex justify-content-between">
+        <%= form.submit 'Criar curso', class: 'btn btn-success' %>
+        <%= link_to 'Cancelar', courses_path, class: 'btn btn-light' %>
+      </div>
+    </div>
   </div>
 <% end %>

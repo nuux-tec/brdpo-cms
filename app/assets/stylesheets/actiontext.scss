@@ -34,3 +34,18 @@
     }
   }
 }
+
+trix-editor {
+  min-height: 200px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-weight: $font-weight-input;
+
+  &:focus {
+    border: 1px solid $primary;
+  }
+}
+
+.trix-button--icon-quote, .trix-button--icon-attach, .trix-button--icon-strike {
+  display: none;
+}
