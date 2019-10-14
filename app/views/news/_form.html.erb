@@ -1,0 +1,40 @@
+<%= form_with(model: news, local: true) do |form| %>
+  <% if news.errors.any? %>
+    <div class="alert alert-warning mb-4">
+      Há alguns erros no formulário, confira:
+
+      <ul class="m-0">
+        <% news.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :title, "Título da notícia" %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :content, "Conteúdo da notícia" %>
+        <%= form.rich_text_area :content %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="actions d-flex justify-content-between">
+        <%= form.submit class: 'btn btn-success' %>
+        <%= link_to 'Cancelar', news_index_path, class: 'btn btn-light' %>
+      </div>
+    </div>
+  </div>
+<% end %>

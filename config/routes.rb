@@ -18,4 +18,11 @@ Rails.application.routes.draw do
       patch 'disable'
     end
   end
+  
+  resources :news do
+    member do
+      patch 'publish'
+      patch 'disable'
+    end
+  end
 end

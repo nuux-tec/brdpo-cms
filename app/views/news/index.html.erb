@@ -1,0 +1,55 @@
+<%= render 'layouts/alert' %>
+
+<div class="container cms">
+  <div class="cms__page">
+    <h1 class="cms__title m-0">Notícias</h1>
+
+    <div class="cms__content">
+      <% if @news.empty? %>
+        <div class="alert alert-primary d-flex align-items-center justify-content-between">
+          Não há notícias.
+
+          <%= link_to 'Crie a primeira notícia', new_news_path, class: 'btn btn-primary' %>
+        </div>
+      <% else %>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>Status</th>
+              <th>Nome</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @news.each do |news| %>
+              <tr>
+                <td>
+                  <% if news.published? %>
+                    <%= link_to disable_news_path(news), method: :patch do %>
+                      <div class="badge badge-success badge-action">Publicada</div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to publish_news_path(news), method: :patch do %>
+                      <div class="badge badge-light badge-action">Desativada</div>
+                    <% end %>
+                  <% end %>
+                </td>
+
+                <td><%= news.title %></td>
+
+                <td align="right">
+                  <%= link_to 'Editar', edit_news_path(news) %>
+                  <span>&emsp;</span>
+                  <%= link_to 'Excluir', news, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <%= link_to 'Nova notícia', new_news_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
