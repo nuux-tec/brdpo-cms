@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :publish, :disable]
 
   def index
     @courses = Course.all
@@ -35,6 +35,22 @@ class CoursesController < ApplicationController
       else
         format.html { render :edit }
       end
+    end
+  end
+
+  def publish
+    respond_to do |format|
+      @course.publish
+
+      format.html { redirect_to courses_path, notice: 'O curso foi publicado com sucesso.' }
+    end
+  end
+
+  def disable
+    respond_to do |format|
+      @course.disable
+
+      format.html { redirect_to courses_path, notice: 'O curso foi desativado com sucesso.' }
     end
   end
 

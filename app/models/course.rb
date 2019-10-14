@@ -6,4 +6,20 @@ class Course < ApplicationRecord
   validates :price, presence: true
   validates :duration, presence: true
   validates :when, presence: true
+
+  enum status: [:published, :disabled]
+
+  before_create :set_default_status
+
+  def set_default_status
+    self.status = 'published'
+  end
+
+  def publish
+    update(status: 'published')
+  end
+
+  def disable
+    update(status: 'disabled')
+  end
 end

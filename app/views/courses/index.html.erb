@@ -15,6 +15,7 @@
         <table class="table">
           <thead class="thead-light">
             <tr>
+              <th>Status</th>
               <th>Nome</th>
               <th>Duração</th>
               <th>Quando?</th>
@@ -26,6 +27,18 @@
           <tbody>
             <% @courses.each do |course| %>
               <tr>
+                <td>
+                  <% if course.published? %>
+                    <%= link_to disable_course_path(course), method: :patch do %>
+                      <div class="badge badge-success badge-action">Publicado</div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to publish_course_path(course), method: :patch do %>
+                      <div class="badge badge-light badge-action">Desativado</div>
+                    <% end %>
+                  <% end %>
+                </td>
+
                 <td><%= course.name %></td>
                 <td><%= course.duration %></td>
                 <td><%= course.when.strftime('%d/%m/%Y') %></td>

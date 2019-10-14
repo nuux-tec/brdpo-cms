@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :courses
+  resources :courses do
+    member do
+      patch 'publish'
+      patch 'disable'
+    end
+  end
 end
