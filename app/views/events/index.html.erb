@@ -1,0 +1,61 @@
+<%= render 'layouts/alert' %>
+
+<div class="container cms">
+  <div class="cms__page">
+    <h1 class="cms__title m-0">Eventos</h1>
+
+    <div class="cms__content">
+      <% if @events.empty? %>
+        <div class="alert alert-primary d-flex align-items-center justify-content-between">
+          Não há eventos.
+
+          <%= link_to 'Crie o primeiro evento', new_event_path, class: 'btn btn-primary' %>
+        </div>
+      <% else %>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>Status</th>
+              <th>Nome</th>
+              <th>Quando?</th>
+              <th>Onde?</th>
+              <th>Preço</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @events.each do |event| %>
+              <tr>
+                <td>
+                  <% if event.published? %>
+                    <%= link_to disable_event_path(event), method: :patch do %>
+                      <div class="badge badge-success badge-action">Publicado</div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to publish_event_path(event), method: :patch do %>
+                      <div class="badge badge-light badge-action">Desativado</div>
+                    <% end %>
+                  <% end %>
+                </td>
+
+                <td><%= event.name %></td>
+                <td><%= event.when.strftime('%d/%m/%Y às %H:%M') %></td>
+                <td><%= event.location %></td>
+                <td>R$ <%= event.price %></td>
+
+                <td align="right">
+                  <%= link_to 'Editar', edit_event_path(event) %>
+                  <span>&emsp;</span>
+                  <%= link_to 'Excluir', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <%= link_to 'Novo evento', new_event_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

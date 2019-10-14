@@ -1,0 +1,78 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div class="alert alert-warning mb-4">
+      Há alguns erros no formulário, confira:
+
+      <ul class="m-0">
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :name, "Nome do evento" %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :about, "Descrição do evento" %>
+          <%= form.rich_text_area :about %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :when, "Data e horário do evento" %>
+          <br>
+          <%= form.datetime_select :when, { order: [:day, :month, :year, :hour, :minute], start_year: Date.today.year }, { class: "custom-select" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :price, "Preço do evento" %>
+          <%= form.text_field :price, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :location, "Local do evento" %>
+          <%= form.text_field :location, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="actions d-flex justify-content-between">
+        <%= form.submit class: 'btn btn-success' %>
+        <%= link_to 'Cancelar', events_path, class: 'btn btn-light' %>
+      </div>
+    </div>
+  </div>
+<% end %>

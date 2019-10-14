@@ -1,0 +1,22 @@
+<div class="container cms">
+  <div class="cms__page">
+    <div class="cms__breadcrumb">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <%= link_to 'Eventos', events_path %>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Editar evento</li>
+        </ol>
+      </nav>
+    </div>
+
+    <h1 class="cms__title m-0">Editar evento</h1>
+
+    <div class="cms__content">
+      <div class="cms__form">
+        <%= render 'form', event: @event %>
+      </div>
+    </div>
+  </div>
+</div>
