@@ -6,6 +6,7 @@ json.array! @courses do |course|
   end
   
   json.name course.name
+  json.category course.category
   json.price course.price
   json.about course.about.body
   json.duration course.duration
