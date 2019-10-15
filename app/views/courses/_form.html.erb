@@ -39,6 +39,15 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
+        <%= form.label :category, "Categoria do curso" %>
+        <%= form.text_field :category, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
         <%= form.label :duration, "Duração do curso", class: 'm-0' %>
         <div class="text-muted mb-2">Ex: 1 semana, 1 mês</div>
         <%= form.text_field :duration, class: 'form-control' %>
