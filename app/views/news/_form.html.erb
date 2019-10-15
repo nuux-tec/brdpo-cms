@@ -16,9 +16,9 @@
       <div class="form-group">
         <%= form.label :image, "Imagem da notícia" %>
 
-        <% if event.image.attached? %>
+        <% if news.image.attached? %>
           <span>
-            (<%= link_to "imagem atual: #{event.image.filename}", url_for(event.image), target: '_blank' %>)
+            (<%= link_to "imagem atual: #{news.image.filename}", url_for(news.image), target: '_blank' %>)
           </span>
         <% end %>
 
