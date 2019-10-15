@@ -1,5 +1,10 @@
 json.array! @courses do |course|
   json.id course.id
+
+  if course.image.attached?
+    json.image rails_blob_url(course.image)
+  end
+  
   json.name course.name
   json.price course.price
   json.about course.about.body

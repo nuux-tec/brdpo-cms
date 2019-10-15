@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :image, "Imagem da notícia" %>
+
+        <% if event.image.attached? %>
+          <span>
+            (<%= link_to "imagem atual: #{event.image.filename}", url_for(event.image), target: '_blank' %>)
+          </span>
+        <% end %>
+
+        <%= form.file_field :image, class: 'file-image' %>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">

@@ -6,6 +6,8 @@ class News < ApplicationRecord
 
   enum status: [:published, :disabled]
 
+  has_one_attached :image
+
   before_create :set_default_status
 
   def set_default_status

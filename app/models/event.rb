@@ -7,6 +7,8 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :when, presence: true
 
+  has_one_attached :image
+
   enum status: [:published, :disabled]
 
   before_create :set_default_status

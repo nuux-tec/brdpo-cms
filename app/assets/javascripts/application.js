@@ -12,9 +12,18 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require jquery.fileuploader.min
 //= require popper
 //= require bootstrap-sprockets
 //= require trix/dist/trix
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $('.file-image').fileuploader({
+    limit: 1,
+    fileMaxSize: 10,
+    extensions: ['image/*'],
+  });
+})
