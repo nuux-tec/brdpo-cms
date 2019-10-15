@@ -5,9 +5,9 @@ json.array! @events do |event|
     json.image rails_blob_url(event.image)
   end
 
-  json.day event.created_at.day
-  json.month event.created_at.month
-  json.year event.created_at.year
+  json.day event.when.day
+  json.month event.when.month
+  json.year event.when.year
 
   json.name event.name
   json.about event.about.body
