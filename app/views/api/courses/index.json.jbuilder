@@ -1,4 +1,5 @@
 json.array! @courses do |course|
+  json.id course.id
   json.name course.name
   json.price course.price
   json.about course.about.body
