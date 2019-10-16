@@ -11,4 +11,5 @@ json.array! @news do |news|
 
   json.name news.title
   json.content news.content.body
+  json.resume news.content.body.to_plain_text
 end

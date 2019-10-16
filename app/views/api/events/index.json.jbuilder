@@ -11,6 +11,7 @@ json.array! @events do |event|
 
   json.name event.name
   json.about event.about.body
+  json.resume event.about.body.to_plain_text
   json.price event.price
   json.location event.location
   json.date event.when.strftime('%d/%m/%Y')

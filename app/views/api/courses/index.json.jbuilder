@@ -11,4 +11,5 @@ json.array! @courses do |course|
   json.about course.about.body
   json.duration course.duration
   json.date course.when.strftime('%d/%m/%Y')
+  json.resume course.about.body.to_plain_text
 end
